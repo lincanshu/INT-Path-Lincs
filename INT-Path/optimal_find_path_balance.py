@@ -537,5 +537,5 @@ if __name__ == '__main__':
 		for path in q:
 			n = len(path)
 			for i in range(n - 1):
-				f.write('{} {} '.format(path[i], path[i+1]))
+				f.write('{} {} '.format(path[i]-1, path[i+1]-1))
 			f.write('\n')
