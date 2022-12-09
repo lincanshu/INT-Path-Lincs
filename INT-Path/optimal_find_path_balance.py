@@ -388,7 +388,7 @@ def find_path(G):
 	num_path = len(Queue)
 	#print('queue', Queue)
 	verification(Queue,testG)
-	return num_fleury, num_path,Queue
+	return num_fleury, num_path, Queue
 
 
 def g_generator(NUM_GRAPHS, NUM_NODES):
@@ -517,8 +517,25 @@ def variance(Q):
 '''
 if __name__ == '__main__':
 	#最后一部分工作 LeafSpine  sNum必须是大于3  3的倍数
-	topoMatrix,oddCount= randomTopo.createRandomTopo(15)
-	num_fleury, num_path,q= find_path(topoMatrix)
+	topo, oddCount= randomTopo.createRandomTopo(10)
+	num_fleury, num_path, q= find_path(topo)
 	# print(num_path)
-	print(topoMatrix)
-	print(q)
+	# print(topoMatrix)
+	# print(q)
+
+	# 写入topo
+	with open('topo.txt', 'w') as f:
+		n = len(topo)
+		m = len(topo[0])
+		for i in range(n):
+			for j in range(m):
+				if i < j and topo[i][j] == 1:
+					f.write('{} {}\n'.format(i, j))
+	
+	# 写入path
+	with open('path.txt', 'w') as f:
+		for path in q:
+			n = len(path)
+			for i in range(n - 1):
+				f.write('{} {} '.format(path[i], path[i+1]))
+			f.write('\n')
