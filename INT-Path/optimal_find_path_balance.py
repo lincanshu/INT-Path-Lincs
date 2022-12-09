@@ -517,8 +517,8 @@ def variance(Q):
 '''
 if __name__ == '__main__':
 	#最后一部分工作 LeafSpine  sNum必须是大于3  3的倍数
-	for i in range(1,34):
-		topoMatrix = specialTopo.genSpineLeaf(i*3)
-		#print(topoMatrix)
-		num_fleury, num_path,q= find_path(topoMatrix)
-		print(num_path)
+	topoMatrix,oddCount= randomTopo.createRandomTopo(15)
+	num_fleury, num_path,q= find_path(topoMatrix)
+	# print(num_path)
+	print(topoMatrix)
+	print(q)
